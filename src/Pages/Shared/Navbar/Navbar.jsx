@@ -1,16 +1,32 @@
 // import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const navOption = (
     <>
-      <li>
-        <a>Item 1</a>
+      <li className="text-black font-bold">
+        <Link to="/">Home</Link>
       </li>
-      <li>
-        <a>Parent</a>
+      <li className="text-black font-bold">
+        <Link to="/colleges">Colleges</Link>
       </li>
-      <li>
-        <a>Item 3</a>
+      <li className="text-black font-bold">
+        <Link to="/admission">Admission</Link>
+      </li>
+      <li className="text-black font-bold">
+        <Link to="/myClasses">My College</Link>
       </li>
     </>
   );
@@ -45,26 +61,26 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navOption}</ul>
       </div>
       <div className="navbar-end">
-        {
+        {user ? (
           <>
             <button
-              //   onClick={handleLogOut}
+              onClick={handleLogOut}
               className="btn btn-active btn-ghost btn-sm">
               Log Out
             </button>
             <div className="avatar">
               <div className="w-10 ms-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src={""} />
+                <img src={user?.photoURL} />
               </div>
             </div>
           </>
-          // ) : (
-          //   <>
-          //     <Link to="/login" className="btn btn-active btn-ghost">
-          //       Login
-          //     </Link>
-          //   </>
-        }
+        ) : (
+          <>
+            <Link to="/login" className="btn btn-active btn-ghost">
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
