@@ -15,7 +15,7 @@ const CollegeCard = () => {
   return (
     <>
       <div className="mt-4 md:mt-12 lg:mt-16">
-        <h1 className="font-bold text-center text-lime-800 md:mb-12 lg:mb-12 mb-2">
+        <h1 className="font-bold md:tex-2xl lg:text-2xl text-center text-lime-800 md:mb-12 lg:mb-12 mb-2">
           Top Colleges Here
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-2 md:mx-4 lg:mx-8 gap-4">
