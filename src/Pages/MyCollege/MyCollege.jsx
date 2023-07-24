@@ -50,7 +50,7 @@ const MyCollege = () => {
     <>
       {myCollege?.map((college, index) => (
         <div key={index}>
-          <div className="md:mx-24 lg:mx-32 flex md:gap-8 lg:gap-10 bg-green-300 rounded">
+          <div className="md:mx-24 lg:mx-32 md:flex lg:flex ps-2 md:gap-8 lg:gap-10 bg-green-300 rounded">
             <div>
               <img src={college.candidateURL} alt="" />
             </div>
@@ -84,10 +84,10 @@ const MyCollege = () => {
         </div>
       ))}
 
-      <div className="md:mt-16 lg:mt-20">
+      <div className="md:mt-16 lg:mt-20 mt-12 ">
         {collegeData.map((collegeDataDetails, index) => (
           <div key={index}>
-            <div className="flex md:gap-8 lg:gap-12 md:mt-10 lg:mt-16 md:mx-16 lg:mx-20">
+            <div className="md:flex lg:flex ps-8 md:gap-8 lg:gap-12 md:mt-10 lg:mt-16 md:mx-16 lg:mx-20">
               <div className="w-1/2">
                 <img
                   className="rounded"
@@ -120,7 +120,7 @@ const MyCollege = () => {
                 ))}
               </div>
             </div>
-            <div className="md:mx-16 lg:mx-20">
+            <div className="md:mx-16 lg:mx-20 ps-8">
               <h2 className="font-bold md:text-2xl lg:text-3xl mt-5 mb-4">
                 Sports
               </h2>

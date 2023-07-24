@@ -17,7 +17,7 @@ const Colleges = () => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-2 md:mx-4 lg:mx-8 gap-4">
         {colleges.map((college) => (
-          <div key={college._id} className="card w-96 bg-base-100 shadow-xl">
+          <div key={college._id} className="card w-full bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
               <img
                 src={college.collegeImage}

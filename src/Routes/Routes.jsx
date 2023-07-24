@@ -9,6 +9,9 @@ import Admission from "../Pages/Admission/Admission";
 import MyCollege from "../Pages/MyCollege/MyCollege";
 import CollegeDetails from "../Pages/Colleges/CollegeDetails";
 import AdmissionForm from "../Pages/Admission/AdmissionForm/AdmissionForm";
+import ProtectedRoutes from "./ProtectedRoutes";
+import Profile from "../Pages/Profile/Profile";
+import EditeProfile from "../Pages/Profile/EditeProfile";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: "colleges/collegeDetails/:id",
-        element: <CollegeDetails></CollegeDetails>,
+        element: (
+          <ProtectedRoutes>
+            <CollegeDetails></CollegeDetails>
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "admission",
@@ -47,6 +54,14 @@ const router = createBrowserRouter([
       {
         path: "myCollege",
         element: <MyCollege></MyCollege>,
+      },
+      {
+        path: "profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "editProfile/:id",
+        element: <EditeProfile></EditeProfile>,
       },
     ],
   },

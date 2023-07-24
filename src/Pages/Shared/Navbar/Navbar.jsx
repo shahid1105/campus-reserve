@@ -16,16 +16,16 @@ const Navbar = () => {
 
   const navOption = (
     <>
-      <li className="text-black font-bold">
+      <li className="text-black font-bold bg-gradient-to-l from-blue-500 to-red-600 text-transparent bg-clip-text">
         <Link to="/">Home</Link>
       </li>
-      <li className="text-black font-bold">
+      <li className="text-black font-bold  bg-gradient-to-l from-blue-500 to-red-600 text-transparent bg-clip-text">
         <Link to="/colleges">Colleges</Link>
       </li>
-      <li className="text-black font-bold">
+      <li className="text-black font-bold  bg-gradient-to-l from-blue-500 to-red-600 text-transparent bg-clip-text">
         <Link to="/admission">Admission</Link>
       </li>
-      <li className="text-black font-bold">
+      <li className="text-black font-bold  bg-gradient-to-l from-blue-500 to-red-600 text-transparent bg-clip-text">
         <Link to="/myCollege">My College</Link>
       </li>
     </>
@@ -55,7 +55,9 @@ const Navbar = () => {
             {navOption}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">CampusReserve</a>
+        <a className="btn btn-ghost normal-case md:text-xl lg:text-xl  bg-gradient-to-l from-blue-500 to-red-600 text-transparent bg-clip-text">
+          CampusReserve
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navOption}</ul>
@@ -69,14 +71,21 @@ const Navbar = () => {
               Log Out
             </button>
             <div className="avatar">
-              <div className="w-10 ms-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src={user?.photoURL} />
-              </div>
+              <Link to="/profile">
+                <label
+                  data-tip={user?.displayName}
+                  tabIndex={0}
+                  className="btn btn-ghost btn-circle avatar tooltip tooltip-left">
+                  <div className="md:w-10 lg:w-10 w-8 ms-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <img src={user?.photoURL} />
+                  </div>
+                </label>
+              </Link>
             </div>
           </>
         ) : (
           <>
-            <Link to="/login" className="btn btn-active btn-ghost">
+            <Link to="/login" className="btn btn-active btn-ghost btn-sm">
               Login
             </Link>
           </>

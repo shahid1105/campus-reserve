@@ -10,7 +10,7 @@ const Search = () => {
   console.log(myCollege);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-college`)
+    fetch(`http://localhost:5000/collagesRoutes`)
       .then((res) => res.json())
       .then((data) => {
         setMyCollege(data);
@@ -54,7 +54,7 @@ const Search = () => {
       {searchCollege.trim() !== "" && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-2 md:mx-4 lg:mx-8 gap-4">
           {myCollege?.map((college, index) => (
-            <div key={index} className="card w-96 bg-base-100 shadow-xl">
+            <div key={index} className="card w-full bg-base-100 shadow-xl">
               <figure className="px-10 pt-10">
                 <img
                   src={college.collegeImage}
