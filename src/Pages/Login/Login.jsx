@@ -3,15 +3,20 @@ import GoogleLogin from "../GoogleLogin/GoogleLogin";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import { useRef } from "react";
 
 const Login = () => {
+  const emailRef = useRef();
+
+  const { signIn } = useAuth();
+
+  const { resetPassword } = useAuth();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const { signIn } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,6 +44,27 @@ const Login = () => {
       });
   };
 
+  const handleResetPassword = () => {
+    const email = emailRef.current.value;
+    if (!email) {
+      alert("Please provide your email address for Forget password");
+      return;
+    }
+    resetPassword(email)
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Please check your email",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div>
@@ -52,6 +78,7 @@ const Login = () => {
                   </label>
                   <input
                     {...register("email", { required: true })}
+                    ref={emailRef}
                     type="email"
                     placeholder="email"
                     className="input input-bordered"
@@ -74,9 +101,14 @@ const Login = () => {
                     <span className="text-red-500">Password is required</span>
                   )}
                   <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">
+                    <p className="label-text-alt link link-hover">
                       Forgot password?
-                    </a>
+                    </p>
+                    <button
+                      onClick={handleResetPassword}
+                      className="btn btn-link">
+                      Reset Password
+                    </button>
                   </label>
                 </div>
                 <div className="form-control">

@@ -4,6 +4,11 @@ import useAuth from "../../Hooks/useAuth";
 const GoogleLogin = () => {
   const { googleSignIn } = useAuth();
 
+  //   const location = useLocation();
+  //   const navigate = useNavigate();
+
+  //   const from = location.state?.from?.pathname || "/";
+
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {
       const loggedUser = result.user;
